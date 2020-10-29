@@ -12,7 +12,7 @@
   br = branch
   go = checkout
   cm = commit
-  alias = !git config --get-regexp ^alias\\. | sed -e s/^alias\\.// -e s/\\ /\\ = \\ /
+  alias = !git config --get-regexp ^alias\\. | sed -e s/^alias\\.// -e s/\\ /\\ =\\ /
   pop = stash pop
 
 # define command which will be used when "nvim" is set as a merge tool
