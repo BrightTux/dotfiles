@@ -4,6 +4,3 @@
 [submodule "Documents/slstatus"]
 	path = Documents/slstatus
 	url = https://git.suckless.org/slstatus
-[submodule ".password-store"]
-	path = .password-store
-	url = https://github.com/BrightTux/safekeep.git
