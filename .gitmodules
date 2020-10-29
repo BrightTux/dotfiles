@@ -1,0 +1,9 @@
+[submodule "Documents/dwm"]
+	path = Documents/dwm
+	url = https://github.com/BrightTux/dwm.git
+[submodule "Documents/slstatus"]
+	path = Documents/slstatus
+	url = https://git.suckless.org/slstatus
+[submodule ".password-store"]
+	path = .password-store
+	url = https://github.com/BrightTux/safekeep.git
