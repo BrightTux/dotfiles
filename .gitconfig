@@ -1,0 +1,26 @@
+[user]
+  email = clarence_han[at]hotmail[dot]com
+  name = Clarence Cheong
+[core]
+  editor = nvim
+[diff]
+  tool = vimdiff
+[merge]
+  tool = vimdiff
+[alias]
+  st = status
+  br = branch
+  go = checkout
+  cm = commit
+  alias = !git config --get-regexp ^alias\\. | sed -e s/^alias\\.// -e s/\\ /\\ = \\ /
+  pop = stash pop
+
+# define command which will be used when "nvim" is set as a merge tool
+[mergetool "nvim"]
+  cmd = nvim -f -c \"Gdiffsplit!\" \"$MERGED\"
+# set "nvim" as tool for merging
+[merge]
+  tool = nvim
+# automatically launch merge tool without displaying a prompt
+[mergetool]
+  prompt = false
