@@ -9,5 +9,6 @@ xfce4-clipman &
 /usr/lib/polkit-gnome/polkit-gnome-authentication-agent-1 &
 feh --bg-scale /home/tux/Pictures/wallpapers/wallpaperflare.com_wallpaper.jpg &
 slstatus &
+syncthing &
 
 exec dwm

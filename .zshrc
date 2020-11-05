@@ -21,6 +21,8 @@ export EDITOR='nvim'
 alias vim='nvim'
 alias f2b='sudo fail2ban-client status sshd'
 alias sd='systemctl status sshd'
+alias f='grep --line-buffered -r "" * | fzf'
+alias o='xdg-open'
 
 # esc then v to edit in vim
 autoload edit-command-line; zle -N edit-command-line

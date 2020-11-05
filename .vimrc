@@ -71,7 +71,7 @@ hi CursorLineNr ctermbg=236 cterm=none
 set rtp+=~/.fzf
 set path+=**
 " Quick search
-nmap // :BLines!<cr>
+nmap // :BLines<cr>
 nmap ?? :Rg!<cr>
 
 
