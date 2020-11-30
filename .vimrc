@@ -125,6 +125,8 @@ set hlsearch
 " turn off search highlight
 nnoremap <leader><space> :nohlsearch<CR>
 
+" Don't conceal in markdown
+let g:vim_markdown_conceal = 0
 
 " show existing tab with 2 spaces width
 set tabstop=2
