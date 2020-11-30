@@ -128,12 +128,16 @@ nnoremap <leader><space> :nohlsearch<CR>
 " Don't conceal in markdown
 let g:vim_markdown_conceal = 0
 
-" show existing tab with 2 spaces width
-set tabstop=2
-" when indenting with '>', use 2 spaces width
-set shiftwidth=2
 set expandtab "tab are spaces
+set tabstop=2 " number of visual spaces per tab
+set shiftwidth=2 " when indenting with '>', use 2 spaces width
+set softtabstop=2 " number of spaces in tab when editing
+retab
 
+" sometimes vim removes indent for #. disable smartindent and set these
+set cindent
+set cinkeys-=0#
+set indentkeys-=0#
 
 " Custom keys {{
 "Tab to switch to next open buffer
@@ -158,8 +162,8 @@ vnoremap S :s///g<Left><Left><Left>
 
 "Remember cursor location after swapping buffers
 if v:version >= 700
-	au BufLeave * let b:winview = winsaveview()
-	au BufEnter * if(exists('b:winview')) | call winrestview(b:winview) | endif
+  au BufLeave * let b:winview = winsaveview()
+  au BufEnter * if(exists('b:winview')) | call winrestview(b:winview) | endif
 endif
 
 " Auto indent lines
