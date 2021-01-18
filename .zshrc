@@ -25,6 +25,10 @@ bashcompinit
 # -----------------------------  Custom Setup  ---------------------------------
 export FZF_COMPLETION_TRIGGER='**' # default is **
 
+## Colorize the ls output ##
+alias ls='ls --color=auto'
+alias la='ls -la'
+
 
 stty -ixon # disable ctrl-S halting terminal
 export EDITOR='nvim'

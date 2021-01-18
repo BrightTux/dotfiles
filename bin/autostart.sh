@@ -11,7 +11,6 @@ feh --bg-scale /home/tux/Pictures/Wallpapers/ibelieve2.png &
 slstatus &
 syncthing &
 barrier &
-# xscreensaver -no-splash &
 xautolock -time 60 -locker slock &
 
 exec dwm
