@@ -67,6 +67,8 @@ inoremap <silent> <Up> <ESC><Right>
 inoremap <silent> <Down> <ESC><Right>
 inoremap <silent> jk <ESC>
 
+nnoremap <c-q> :bd<CR>
+
 map <C-n> :Lexplore<CR>
 
 set encoding=utf-8
@@ -106,7 +108,7 @@ syntax enable
 " Display 3 lines above/below the cursor when scrolling with a mouse.
 set scrolloff=3
 set sidescrolloff=3
-set laststatus=2 "always displays the status line
+" set laststatus=2 "always displays the status line
 
 set listchars=tab:»·,trail:·,extends:#
 set list
