@@ -1,12 +1,9 @@
 [user]
   email = clarence_han[at]hotmail[dot]com
   name = Clarence Cheong
-[core]
-  editor = nvim
 [diff]
-  tool = vimdiff
-[merge]
-  tool = vimdiff
+  tool = nvimdiff
+	submodule = log
 [alias]
   st = status
   br = branch

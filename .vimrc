@@ -8,12 +8,17 @@ endif
 call plug#begin()
 Plug 'junegunn/fzf', { 'do': { -> fzf#install() } }
 Plug 'junegunn/fzf.vim'
-Plug 'neoclide/coc.nvim', {'branch': 'release'}
+
+" Wiki + drawing
+Plug 'vimwiki/vimwiki'
+Plug 'gyim/vim-boxdraw'
+
 Plug 'ludovicchabant/vim-gutentags'
 Plug 'tpope/vim-commentary'
 Plug 'jiangmiao/auto-pairs'
-Plug 'sjl/gundo.vim'
-Plug 'dhruvasagar/vim-zoom'
+
+" float term
+Plug 'voldikss/vim-floaterm'
 
 " git
 Plug 'tpope/vim-fugitive'
@@ -24,8 +29,6 @@ Plug 'ayu-theme/ayu-vim'
 Plug 'ap/vim-css-color'
 Plug 'Yggdroot/indentLine'
 
-" gundo
-
 " tmux
 Plug 'christoomey/vim-tmux-navigator'
 call plug#end()
@@ -33,13 +36,11 @@ call plug#end()
 " Unbind some useless/annoying default key bindings.
 nmap Q <Nop> " 'Q' in normal mode enters Ex mode. You almost never want this.
 
-
 "snippets from sensible vim
 set complete-=i
 set smarttab
 set laststatus=2 "always displays the status line
 set backspace=indent,eol,start
-
 
 " Basic Configs
 set nobackup
@@ -65,7 +66,7 @@ set nocompatible "stop pretending to be VI
 set textwidth=80
 set encoding=utf-8
 " Automatically deletes all tralling whitespace on save.
-autocmd BufWritePre * %s/\s\+$//e
+autocmd BufWritePre * %s/^[^']\s\+$//e
 " Disables automatic commenting on newline:
 autocmd FileType * setlocal formatoptions-=c formatoptions-=r formatoptions-=o
 
@@ -80,6 +81,17 @@ set path+=**
 nmap // :BLines<cr>
 nmap ?? :Rg!<cr>
 
+" Floatterm
+let g:floaterm_title = "Floaterm ($1/$2)"
+let g:floaterm_autoinsert = 1
+let g:floaterm_width = 0.8
+let g:floaterm_height = 0.8
+let g:floaterm_wintitle = 0
+let g:floaterm_autoclose = 1
+
+nnoremap   <silent>   <C-t>   :FloatermToggle<CR>
+tnoremap   <silent>   <C-t>   <C-\><C-n>:FloatermToggle<CR>
+
 
 " Enable autocompletion:
 set wildmode=longest,list,full
@@ -91,24 +103,8 @@ function! s:check_back_space() abort
   return !col || getline('.')[col - 1]  =~ '\s'
 endfunction
 
-inoremap <silent><expr> <Tab>
-      \ pumvisible() ? "\<C-n>" :
-      \ <SID>check_back_space() ? "\<Tab>" :
-      \ coc#refresh()
-
-" Use tab and S-Tab to navigate the completion list
-inoremap <expr> <Tab> pumvisible() ? "\<C-n>" : "\<Tab>"
-inoremap <expr> <S-Tab> pumvisible() ? "\<C-p>" : "\<S-Tab>"
-
-" Use enter <cr> to confirm completion
-inoremap <expr> <cr> pumvisible() ? "\<C-y>" : "\<C-g>u\<CR>"
-inoremap <silent><expr> <cr> pumvisible() ? coc#_select_confirm() : "\<C-g>u\<CR>\<c-r>=coc#on_enter()\<CR>"
-autocmd! CompleteDone * if pumvisible() == 0 | pclose | endif
-
 " highlights words under cursor
-"autocmd CursorMoved * exe printf('match IncSearch /\V\<%s\>/', escape(expand('<cword>'), '/\'))
 autocmd CursorMoved * exe exists("HlUnderCursor")?HlUnderCursor?printf('match IncSearch /\V\<%s\>/', escape(expand('<cword>'), '/\')):'match none':""
-nnoremap <silent> <F2> :exe "let HlUnderCursor=exists(\"HlUnderCursor\")?HlUnderCursor*-1+1:1"<CR>
 
 set lazyredraw "redraw only when we need to, leading to faster macros
 set showmatch "highlight matching [{()}]
@@ -189,6 +185,7 @@ set undodir=~/.vim/undodir " create a directory in ~/.vim/undodir
 set undofile
 
 " Setting up central swap directory:
+set noswapfile
 set directory=$HOME/.vim/swapfiles//
 
 " Vim Fugitive settings {{
@@ -199,8 +196,8 @@ set diffopt+=vertical
 let g:signify_realtime = 0
 let g:signify_cvs_list = 1
 let g:signify_sign_add               = '+'
-let g:signify_sign_delete            = '_'
-let g:signify_sign_delete_first_line = '‾'
+let g:signify_sign_delete            = '-'
+let g:signify_sign_delete_first_line = '-'
 let g:signify_sign_change            = '≉'
 let g:signify_sign_changedelete      = g:signify_sign_change
 
@@ -216,9 +213,6 @@ highlight SignifySignDelete cterm=bold ctermbg=237  ctermfg=167
 highlight SignifySignChange cterm=bold ctermbg=237  ctermfg=227
 " }}
 
-" Gundo {{
-nnoremap <leader>u :GundoToggle<cr>
-" }}
 
 nmap <leader>z <Plug>(zoom-toggle)
 
@@ -232,6 +226,9 @@ nnoremap <leader>s :vsplit<CR>
 set termguicolors
 let ayucolor="dark"
 colorscheme ayu
+
+" Vimwiki
+" let g:vimwiki_list = [{'path': '~/vimwiki/', 'syntax': 'markdown', 'ext': '.md'}]
 
 
 " Auto source / update vimrc file after saving it
@@ -259,3 +256,14 @@ endif
 " For terminal bg transparency goodness :)
 highlight Normal ctermbg=NONE guibg=NONE
 highlight NonText ctermbg=NONE guibg=NONE
+
+" Use <Tab> and <S-Tab> to navigate through popup menu
+inoremap <silent><expr> <TAB> pumvisible() ? "\<C-n>" : "\<TAB>"
+inoremap <expr><S-TAB> pumvisible() ? "\<C-p>" : "\<C-h>"
+
+" Set completeopt to have a better completion experience
+set completeopt=menuone,noselect
+
+
+" Avoid showing message extra message when using completion
+set shortmess+=c
