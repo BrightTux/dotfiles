@@ -93,14 +93,14 @@ gls.left[8] = {
   }
 }
 
-gls.mid[1] = {
+gls.left[9] = {
   DiagnosticError = {
     provider = 'DiagnosticError',
     icon = '  ',
     highlight = {colors.red,colors.bg}
   }
 }
-gls.mid[2] = {
+gls.left[10] = {
   DiagnosticWarn = {
     provider = 'DiagnosticWarn',
     icon = '  ',
@@ -108,7 +108,7 @@ gls.mid[2] = {
   }
 }
 
-gls.mid[3] = {
+gls.left[11] = {
   DiagnosticHint = {
     provider = 'DiagnosticHint',
     icon = '  ',
@@ -116,7 +116,7 @@ gls.mid[3] = {
   }
 }
 
-gls.mid[4] = {
+gls.left[12] = {
   DiagnosticInfo = {
     provider = 'DiagnosticInfo',
     icon = '  ',
