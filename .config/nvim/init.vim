@@ -69,8 +69,6 @@ inoremap <silent> jk <ESC>
 
 nnoremap <c-q> :bd<CR>
 
-map <C-n> :Lexplore<CR>
-
 set encoding=utf-8
 " Automatically deletes all tralling whitespace on save.
 autocmd BufWritePre * %s/^[^']\s\+$//e
@@ -139,6 +137,9 @@ set showmatch "highlight matching [{()}]
 inoremap <silent><expr> <TAB> pumvisible() ? "\<C-n>" : "\<TAB>"
 inoremap <expr><S-TAB> pumvisible() ? "\<C-p>" : "\<C-h>"
 
+" <leader>r to run visually select lines in bash 
+vnoremap <Leader>r :w !bash<CR>
+
 " >> Telescope bindings
 nnoremap <Leader>/ <cmd>lua require'telescope.builtin'.builtin{}<CR>
 
@@ -165,6 +166,10 @@ nnoremap <Leader>rg <cmd>lua require'telescope.builtin'.live_grep{}<CR>
 
 " pick color scheme
 nnoremap <Leader>cs <cmd>lua require'telescope.builtin'.colorscheme{}<CR>
+
+" File explorer 
+" map <C-n> :Lexplore<CR>
+nnoremap <C-e> <cmd>lua require'telescope.builtin'.file_browser{}<CR>
 
 
 " For terminal bg transparency goodness :)
