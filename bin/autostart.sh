@@ -11,5 +11,7 @@ feh --bg-scale /home/tux/Pictures/Wallpapers/ibelieve2.png &
 slstatus &
 # syncthing &
 xautolock -time 60 -locker slock &
+/home/tux/.screenlayout/default.sh & 
+key-mapper-service &
 
 exec dwm

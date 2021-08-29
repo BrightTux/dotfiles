@@ -80,11 +80,13 @@ alias vt='nvim +terminal'
 alias vd='nvim -d'
 alias test='cd /home/tux/ScratchPad'
 
-alias -s py=nvim
 alias -s md=nvim
 alias -s wiki=nvim
 
 alias nn='nvim -u NONE'
+alias n='nvim'
+
+alias icat="kitty +kitten icat"
 
 
 # ---------- temp alias ------------
@@ -101,6 +103,8 @@ autoload edit-command-line; zle -N edit-command-line
 bindkey -M vicmd v edit-command-line
 
 export FBFONT=/usr/share/kbd/consolefonts/ter-216n.psf.gz
+
+alias gp='source ~/ScratchPad/coingecko/bin/activate; python ~/ScratchPad/get_price.py; deactivate'
 
 
 # Run tmux on bash startup & attach is session exist
