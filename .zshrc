@@ -71,6 +71,7 @@ alias la='ls -la'
 stty -ixon # disable ctrl-S halting terminal
 # alias vim='/usr/bin/nvim'
 export EDITOR=nvim
+export VISUAL=nvim
 alias f2b='sudo fail2ban-client status sshd'
 alias sd='systemctl status sshd'
 alias f='grep --line-buffered -r "" * | fzf'
