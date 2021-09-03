@@ -9,7 +9,7 @@ xfce4-clipman &
 /usr/lib/polkit-gnome/polkit-gnome-authentication-agent-1 &
 feh --bg-scale /home/tux/Pictures/Wallpapers/ibelieve2.png &
 slstatus &
-# syncthing &
+syncthing &
 xautolock -time 60 -locker slock &
 /home/tux/.screenlayout/default.sh & 
 key-mapper-service &

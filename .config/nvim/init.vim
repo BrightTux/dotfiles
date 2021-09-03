@@ -35,6 +35,7 @@ call plug#begin(stdpath('data') . 'vimplug')
 
     Plug 'mhinz/vim-signify'
     Plug 'voldikss/vim-floaterm'
+    Plug 'karoliskoncevicius/vim-sendtowindow'
 
     Plug 'tpope/vim-commentary'
 
