@@ -86,9 +86,10 @@ alias -s wiki=nvim
 
 alias nn='nvim -u NONE'
 alias n='nvim'
+alias cat='batcat'
 
 alias icat="kitty +kitten icat"
-
+[[ "$TERM" == "xterm-kitty" ]] && alias ssh="kitty +kitten ssh"
 
 # ---------- temp alias ------------
 alias uv='cd ~/Documents/uvlight; source ~/Documents/uvlight/uv/bin/activate'
@@ -97,7 +98,8 @@ alias pid='cd /home/tux/Desktop/wfh/person_reid; source myenv/bin/activate'
 
 
 # ----- source files in ~/bin/
-export PATH="$PATH:/home/tux/bin"
+export PATH="$PATH:/home/clarence/bin"
+export PATH="$PATH:/home/clarence/.local/kitty.app/bin/"
 
 # esc then v to edit in vim
 autoload edit-command-line; zle -N edit-command-line
@@ -115,3 +117,8 @@ alias gp='source ~/ScratchPad/coingecko/bin/activate; python ~/ScratchPad/get_pr
 eval "$(starship init zsh)"
 
 [ -f ~/.fzf.zsh ] && source ~/.fzf.zsh
+
+# Generated for envman. Do not edit.
+[ -s "$HOME/.config/envman/load.sh" ] && source "$HOME/.config/envman/load.sh"
+
+eval "$(zoxide init zsh)"
